@@ -1,0 +1,4 @@
+[env]
+# Make PyO3 build against the project's uv-managed Python (created by `uv sync`)
+# rather than whatever `python3` is first on PATH.
+PYO3_PYTHON = { value = ".venv/bin/python", relative = true }

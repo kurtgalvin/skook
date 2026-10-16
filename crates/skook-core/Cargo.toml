@@ -1,0 +1,9 @@
+[package]
+name = "skook-core"
+description = "The skook stream processing engine."
+version.workspace = true
+edition.workspace = true
+license.workspace = true
+repository.workspace = true
+
+[dependencies]

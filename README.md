@@ -3,6 +3,23 @@ An embeddable stream processing engine written in Rust. Runs inside your app and
 
 skook, short for skookum: strong, solid, built right.
 
+## Development
+
+skook is a Rust engine (`crates/skook-core`) exposed to Python through
+[PyO3](https://pyo3.rs) bindings (`crates/skook-python`), built with
+[maturin](https://www.maturin.rs). You need [Rust](https://rustup.rs) and
+[uv](https://docs.astral.sh/uv/).
+
+```sh
+uv sync                  # create .venv, build the Rust extension, install dev tools
+uv run pytest            # Python tests (rebuilds automatically if Rust changed)
+cargo test --workspace   # Rust tests (run `uv sync` first)
+cargo clippy --workspace # Rust lints
+```
+
+For benchmarking, build an optimized extension with
+`uv run maturin develop --uv --release`.
+
 ## License
 
 Licensed under either of

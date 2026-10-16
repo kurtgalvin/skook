@@ -1,0 +1,18 @@
+[package]
+name = "skook-python"
+description = "Python bindings for the skook stream processing engine."
+version.workspace = true
+edition.workspace = true
+license.workspace = true
+repository.workspace = true
+publish = false
+
+[lib]
+# Must match the #[pymodule] name in src/lib.rs and `module-name` in pyproject.toml.
+name = "_skook"
+crate-type = ["cdylib"]
+
+[dependencies]
+# abi3-py310: one wheel per platform that works on Python 3.10 and newer.
+pyo3 = { version = "0.30.1", features = ["abi3-py310"] }
+skook-core = { path = "../skook-core" }

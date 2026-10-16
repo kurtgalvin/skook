@@ -1,0 +1,33 @@
+[build-system]
+requires = ["maturin>=1.15,<2.0"]
+build-backend = "maturin"
+
+[project]
+name = "skook"
+description = "An embeddable stream processing engine written in Rust."
+readme = "README.md"
+requires-python = ">=3.10"
+license = "MIT OR Apache-2.0"
+license-files = ["LICENSE-APACHE", "LICENSE-MIT"]
+classifiers = [
+    "Programming Language :: Rust",
+    "Programming Language :: Python :: Implementation :: CPython",
+]
+dynamic = ["version"]
+
+[dependency-groups]
+dev = ["maturin>=1.15,<2.0", "pytest>=8"]
+
+[tool.maturin]
+manifest-path = "crates/skook-python/Cargo.toml"
+python-source = "python"
+module-name = "skook._skook"
+
+[tool.uv]
+# Rebuild the extension on `uv sync` / `uv run` when Rust code changes.
+cache-keys = [
+    { file = "pyproject.toml" },
+    { file = "Cargo.toml" },
+    { file = "crates/**/Cargo.toml" },
+    { file = "crates/**/*.rs" },
+]
